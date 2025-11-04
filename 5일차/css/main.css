@@ -1,0 +1,38 @@
+@charset 'utf-8';
+
+header h1 img{width:60px !important;}
+
+main{}
+/* 슬라이드 서식 */
+#myCarousel{
+  margin-bottom:10px;
+  position:relative !important;
+  height:90vh;
+}
+.carousel-item{height:90vh}
+.carousel-caption{top:32%;}
+
+/* 2번 콘텐츠 서식 */
+.marketing{
+  padding:50px 0px;
+}
+
+/* 3번 점보트론 서식 */
+.jumbotron{
+  padding-bottom: 25px;
+  margin-bottom: 50px;
+}
+.jumbotron h1{
+  font-size: 8em; margin-bottom: 20px;
+}
+.jumbotron p{margin-bottom: 30px;}
+
+/* 4번 콘텐츠 서식 */
+.con_four{
+  padding:50px 0px;
+}
+.col-xs-12 h2{
+  font-size: 2.3em; 
+  margin-bottom: 50px;
+}
+.col-md-3 p{margin-bottom: 30px;}

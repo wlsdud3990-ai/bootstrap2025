@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>부트스트랩을 활용한 반응형웹 구현하기</title>
+
+  <!-- 1. 부트스트랩 css주소 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+
+  <!-- 반응형 메인서식 -->
+  <link href="./css/main.css" rel="stylesheet" type="text/css">
+
+  <!-- 2. 부트스트랩 JS주소 -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</head>
+<body>
+  <!-- 상단헤더영역 -->
+  <header>
+    <nav aria-label="내비게이션 바" class="navbar navbar-dark bg-dark navbar-expand-md">
+      <div class="container-fluid">
+        <h1>
+          <a href="index.html" title="메인페이지로 바로가기" class="navbar-brand">
+            <img src="./images/bootstrap-logo.svg" alt="상단로고">
+          </a>
+        </h1>
+
+        <!-- 모바일 해상도일 경우 나오는 전체메뉴 버튼 -->
+        <button type="button" class="navbar-toggler" aria-label="전체메뉴" data-bs-target="#menu" data-bs-toggle="collapse">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- 가로메뉴 -->
+        <div id="menu" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav me-auto mb-2 mb-md-0">
+            <li class="nav-item"><a href="#" title="" class="nav-link active">Home</a></li>
+            <li class="nav-item"><a href="#" title="" class="nav-link">Menu1</a></li>
+            <li class="nav-item"><a href="#" title="" class="nav-link disabled">Menu2</a></li>
+            <li class="nav-item dropdown">
+              <a href="#" title="" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">드롭다운메뉴</a>
+              <ul class="dropdown-menu text-center">
+                <li><a href="#" title="" class="dropdown-item">menu1</a></li>
+                <li><a href="#" title="" class="dropdown-item">menu2</a></li>
+                <li><a href="#" title="" class="dropdown-item">menu3</a></li>
+                <li><a href="#" title="" class="dropdown-item">menu4</a></li>
+              </ul>
+            </li>
+          </ul>
+
+          <!-- 검색박스 -->
+          <form role="search">
+            <input type="search" placeholder="검색어 입력" aria-label="검색어 입력" class="form-control">
+          </form>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- 메인콘텐츠 -->
+  <main>
+    <!-- 중앙 컨텐츠 시작 -->
+    <div id="myCarousel" data-bs-ride="carousel" class="carousel slide mb-6">
+      <!-- 콘트롤 버튼 -->
+      <div class="carousel-indicators">
+        <button type="button" data-bs-slide-to="0" aria-label="slide1" class="active" aria-current="true" data-bs-target="#myCarousel"></button>
+        <button type="button" data-bs-slide-to="1" aria-label="slide2" data-bs-target="#myCarousel"></button>
+        <button type="button" data-bs-slide-to="2" aria-label="slide3" data-bs-target="#myCarousel"></button>
+      </div>
+
+      <!-- 슬라이드 콘텐츠 -->
+      <div class="carousel_inner">
+        <div class="carousel-item active">
+          <!-- 배경박스 -->
+          <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="var(--bs-secondary-color)"/></svg>
+          <!-- 내용이 들어가는 박스 -->
+          <div class="container">
+            <div class="carousel-caption text-start">
+              <h1>Example headline.</h1>
+              <p class="opacity-75">Some representative placeholder content for the first slide of the carousel.</p>
+              <p><a href="#" title="" class="btn btn-lg btn-primary">Sign up today</a></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="carousel-item">
+
+          <!-- 배경박스 -->
+          <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="var(--bs-secondary-color)"/></svg>
+
+          <!-- 내용이 들어가는 박스 -->
+          <div>
+            <div class="carousel-caption text-center">
+              <h1>Another example headline.</h1>
+              <p class="opacity-75">Some representative placeholder content for the second slide of the carousel.</p>
+              <p><a href="#" title="" class="btn btn-lg btn-primary">Learn more</a></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="carousel-item">
+
+          <!-- 내용이 들어가는 박스 -->
+          <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="var(--bs-secondary-color)"/></svg>
+
+          <!-- 내용이 들어가는 박스 -->
+          <div>
+            <div class="carousel-caption text-end">
+              <h1>One more for good measure.</h1>
+              <p class="opacity-75">Some representative placeholder content for the third slide of this carousel.</p>
+              <p><a href="#" title="" class="btn btn-lg btn-primary">Browse gallery</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 좌측버튼 -->
+      <button type="button" class="carousel-control-prev" data-bs-target="#myCarousel" data-bs-slide="prev">
+        <span aria-hidden="true" class="carousel-control-prev-icon"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+
+      <!-- 우측버튼 -->
+      <button type="button" class="carousel-control-next" data-bs-target="#myCarousel" data-bs-slide="next">
+        <span aria-hidden="true" class="carousel-control-next-icon"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+
+    <!-- 2번째 콘텐츠 -->
+    <div class="container marketing pt-5 pb-5">
+      <!-- Three columns of text below the carousel -->
+      <div class="row">
+        <div class="col-lg-4 text-center">
+          <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-color)"/></svg>
+          <h2 class="fw-normal">Heading</h2>
+          <p>Some representative placeholder content for the three columns of text below the carousel. This is the first column.</p>
+          <p><a href="#" title="" class="btn btn-secondary">View details &raquo;</a></p>
+        </div><!-- /.col-lg-4 -->
+
+        <div class="col-lg-4 text-center">
+          <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-color)"/></svg>
+          <h2 class="fw-normal">Heading</h2>
+          <p>Another exciting bit of representative placeholder content. This time, we've moved on to the second column.</p>
+          <p><a href="#" title="" class="btn btn-secondary">View details &raquo;</a></p>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-4 text-center">
+          <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-color)"/></svg>
+          <h2 class="fw-normal">Heading</h2>
+          <p>And lastly this, the third column of representative placeholder content.</p>
+          <p><a href="#" title="" class="btn btn-secondary">View details &raquo;</a></p>
+        </div><!-- /.col-lg-4 -->
+      </div><!-- /.row -->
+    </div>
+
+  <hr>
+
+    <!-- 3번째 콘텐츠 jumbotron Start -->
+    <div class="container p-5">
+      <div class="jumbotron text-center bg-body-tertiary rounded-3">
+        <h1>Hello, world!</h1>
+        <p>점보트론은 대형 스크린 TV의 상표명이자, 대형 전광판을 통칭하는 말입니다. <br>
+        블로그형 홈페이지에서 자주 사용되며, 회사 이미지나 사진을 첨부해놓고 그 위에 메뉴를 만드는 경우가 있습니다. <br>
+        중요한 정보를 적어놓은 쇼케이스를 메뉴 밑에다가 두는 경우가 많은데요, 이걸 부트스트랩에서 적용을 하려면 점보트론이 필요합니다. 
+        </p>
+        <p><a href="#" role="button" title="" class="btn btn-primary btn-lg">Learn more</a></p>
+      </div>
+    </div>
+
+    <!-- 4번째 콘텐츠 contents Start -->
+    <div class="container p-5 con_four">
+      <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-3">
+          <h2>Contents Title1</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque similique maxime sunt, accusamus assumenda, veritatis illum eos doloremque nam repellendus commodi delectus, fugiat quos natus. Officiis voluptatem veritatis, saepe.
+          </p>
+          <a href="#" title="" class="btn btn-light btn-line">Read More</a>
+        </div>
+
+        <div class="col-xs-12 col-sm-6 col-md-3">
+          <h2>Contents Title2</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor voluptates nobis quidem at nulla placeat quia harum quod, consectetur cum quos repudiandae quam eius consequuntur perferendis earum necessitatibus beatae doloribus.</p>
+          <a href="#" title="" class="btn btn-light btn-line">Read More</a>
+        </div>
+
+        <div class="col-xs-12 col-sm-6 col-md-3">
+          <h2>Contents Title3</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias fugiat aperiam expedita omnis assumenda eligendi magni aliquid a sed explicabo iure perferendis earum rerum, voluptatibus, amet beatae ullam, repudiandae accusantium.</p>
+          <a href="#" title="" class="btn btn-light btn-line">Read More</a>
+        </div>
+
+        <div class="col-xs-12 col-sm-6 col-md-3">
+          <h2>Contents Title4</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime mollitia sunt suscipit delectus rem! Aliquid tempora cum nesciunt debitis velit in perspiciatis hic facilis, nulla rerum minus saepe voluptates quisquam.</p>
+          <a href="#" title="" class="btn btn-light btn-line">Read More</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- 하단푸터영역 -->
+  <footer class="container bg-dark pt-3 pb-3">
+    <p class="float-end">
+      <a href="#" title="위로 바로가기" class="link-light text-decoration-none">Back to top</a>
+    </p>
+    <p>&copy;2025 Company, Inc. &middot; 
+      <a href="#" title="이용약관" class="link-light text-decoration-none">Privacy</a> &middot; 
+      <a href="#" title="정보" class="link-light text-decoration-none">Terms</a>
+    </p>
+  </footer>
+</body>
+</html>

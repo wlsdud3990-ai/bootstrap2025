@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>내 물건 팔기</title>
+
+
+  <!-- 1. 부트스트랩 css cdn주소 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+  <!-- 2. 부트스트랩 js cdn주소 -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+    crossorigin="anonymous"></script>
+
+  <!-- 3. 부트스트랩 아이콘 주소 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+
+  <style>
+    body {
+      height: 100vh;
+      justify-content: center;
+      align-items: center;
+      font-size: 14px;
+      /* 👈 전체 글씨 크기 조정 */
+      font-weight: bold;
+      position: relative;
+      /* 기준점 */
+    }
+
+
+    .card {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 10px;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, .2);
+      width: 100%;
+      max-width: 800px;
+    }
+
+    h2 {
+      font-size: 22px;
+    }
+
+    /* 모든 input과 textarea placeholder 글씨 크기 변경 */
+    input::placeholder,
+    textarea::placeholder {
+      font-size: 12px;
+      /* 원하는 글씨 크기 */
+      color: #6c757d;
+      /* 회색 계열 (선택 사항) */
+      opacity: 1;
+      /* 브라우저 기본 반투명 제거 */
+    }
+  </style>
+</head>
+
+<body>
+
+
+  <div class="card p-4 mb-1">
+    <!-- 상단 닫기 / 임시저장 -->
+    <div class="d-flex justify-content-between align-items-center">
+      <!-- 왼쪽 X -->
+      <button type="button" class="btn btn-link text-dark fw-bold p-0"
+        style="font-size: 20px;text-decoration:none;">x</button>
+
+      <h2 class="text-center mt-2">내 물건 팔기</h2>
+
+      <!-- 오른쪽 임시저장 -->
+      <button type="button" class="btn btn-outline-secondary btn-sm rounded-pill"
+        style="font-size: 12px; border:none;">임시 저장</button>
+
+    </div>
+
+
+
+    <hr class="mb-12" style="border-top: 2px solid #dee2e6;">
+
+    <!-- 제목 -->
+
+
+    <div class="mb-3">
+      <!-- 숨겨진 파일 input -->
+      <input type="file" id="imageUpload" accept="image/*" multiple style="display: none;">
+
+      <!-- 카메라 아이콘 영역 -->
+      <div class="border rounded d-flex flex-column justify-content-center align-items-center"
+        style="width: 60px; height: 60px; background-color: #f8f9fa; cursor: pointer;"
+        onclick="document.getElementById('imageUpload').click();">
+
+        <!-- 카메라 아이콘 -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-camera mb-1"
+          viewBox="0 0 16 16">
+          <path
+            d="M10.5 3a.5.5 0 0 1 .5.5v1.5h3A1.5 1.5 0 0 1 16 6.5v7A1.5 1.5 0 0 1 14.5 15h-13A1.5 1.5 0 0 1 0 13.5v-7A1.5 1.5 0 0 1 1.5 5h3V3.5a.5.5 0 0 1 .5-.5h5zm-3 3a3 3 0 1 0 0 6 3 3 0 0 0 0-6z" />
+        </svg>
+
+        <!-- 하단 0/10 표시 -->
+        <small class="text-muted" id="imageCounter">0/10</small>
+      </div>
+    </div>
+
+
+
+    <!-- 폼 시작 -->
+    <form novalidate>
+      <!-- 제목 -->
+      <div class="mb-3">
+        <label for="title" class="form-label">제목 <span class="text-danger">*</span></label>
+        <input type="text" class="form-control" id="title" name="title" placeholder="제목을 입력해주세요." maxlength="28"
+          required>
+        <div class="invalid-feedback">제목을 입력해주세요.</div>
+      </div>
+
+
+
+      <!-- 거래 방식 -->
+      <div class="mb-3">
+        <label for="price" class="form-label">거래 방식<span class="text-danger"></span></label>
+
+        <!-- 버튼 -->
+        <div class="mb-3">
+          <div class="btn-group gap-2" role="group" aria-label="거래 방식 선택">
+            <input type="radio" class="btn-check" name="dealType" id="sell" autocomplete="off" checked>
+            <label class="btn btn-outline-dark btn-sm rounded-pill" for="sell">판매하기</label>
+
+            <input type="radio" class="btn-check" name="dealType" id="share" autocomplete="off">
+            <label class="btn btn-outline-dark btn-sm rounded-pill" for="share">나눔하기</label>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="price" class="form-label">가격</label>
+          <input type="text" class="form-control" id="price" name="price" placeholder="가격을 입력해주세요." maxlength="10"
+            required>
+          <div class="invalid-feedback">가격을 입력해주세요.</div>
+        </div>
+
+
+        <!-- 가격 제안 -->
+        <div class="mb-3 form-check">
+          <input type="checkbox" class="form-check-input" id="agree" name="agree">
+          <label class="form-check-label" for="agree">가격 제안 받기</label>
+        </div>
+
+
+
+        <!-- 자세한 설명 -->
+        <div class="mb-3">
+          <label for="description" class="form-label">자세한 설명</label>
+          <textarea class="form-control mb-2" id="description" name="description" rows="4"
+            placeholder="다산동에 올릴 게시글 내용을 작성해주세요. (판매 금지 물품은 게시가 제한될 수 있어요.) 신뢰할 수 있는 거래를 위해 자세히 적어주세요. 과학기술정보통신부, 한국 인터넷진흥원과 함께 해요."
+            maxlength="500"></textarea>
+          <button type="button" class="btn btn-light btn-sm" style="font-size: 12px;font-weight:bold;">자주 쓰는 문구</button>
+        </div>
+
+        <!-- 거래 희망 장소 -->
+        <div class="mb-3">
+          <label for="location" class="form-label">거래 희망 장소</label>
+          <input type="text" class="form-control" id="location" name="location" placeholder="위치 추가" maxlength="18">
+        </div>
+
+        <div class="mb-3">
+          <a href="#" class="text-secondary text-decoration-none" style="font-size: 12px; color: #6c757d;">
+            보여줄 동네 선택 &gt;
+          </a>
+        </div>
+
+
+        <input type="submit" value="작성 완료" class="btn w-100"
+          style="background-color: #fa652a; border-color: #fa652a; color: #fff;">
+
+    </form>
+  </div>
+
+  <script>
+
+    const imageInput = document.getElementById('imageUpload');
+    const imageCounter = document.getElementById('imageCounter');
+    const maxImages = 10;
+
+    imageInput.addEventListener('change', () => {
+      // 선택한 이미지 개수 표시
+      const count = imageInput.files.length;
+      imageCounter.textContent = `${count}/${maxImages}`;
+    });
+
+    const priceInput = document.getElementById('price');
+    const maxLength = 10;
+
+    priceInput.addEventListener('input', () => {
+      // 숫자만 허용
+      priceInput.value = priceInput.value.replace(/\D/g, '');
+
+      // 최대 자리수 제한
+      if (priceInput.value.length > maxLength) {
+        priceInput.value = priceInput.value.slice(0, maxLength);
+      }
+    });
+  </script>
+
+
+
+</body>
+
+</html>

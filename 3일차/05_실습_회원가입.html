@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>부트스트랩 04_모달윈도 띄우기(로그인)</title>
+
+  <!-- 1. 부트스트랩 css cdn주소 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+  <!-- 2. 부트스트랩 js cdn주소 -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+    crossorigin="anonymous"></script>
+
+
+  <style>
+    body {
+      padding: 50px;
+      /* 상하좌우 모두 20px 패딩 */
+    }
+
+    .card-body {
+      padding: 30px;
+      /* 카드 내부에 30px 패딩 */
+    }
+
+    .card-title {
+      font-family: 'Roboto', sans-serif;
+    }
+
+    /* col-md-8과 col-md-4 요소의 하단에만 선 추가 */
+    .custom-underline {
+      position: relative;
+      /* 하단 선을 정확히 위치시키기 위해 상대적인 위치 설정 */
+    }
+
+    .custom-underline:after {
+      content: '';
+      /* 가상 요소 */
+      position: absolute;
+      bottom: -30px;
+      /* 하단에 위치 */
+      left: 12px;
+      width: 95%;
+      /* 전체 너비에 선 추가 */
+      transform: translateY(50%);
+      border-bottom: 2px solid #d3d3d3;
+      /* 2px 파란색 선 추가 */
+    }
+
+    /* 포커스 시 하단 선 색상 변경 */
+    .form-select:focus,
+    .form-control:focus {
+      border-bottom-color: #0056b3;
+      /* 포커스 시 선 색상 변경 */
+    }
+
+    body {
+      background: linear-gradient(135deg, #4e73df, #224ade);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .card {
+      border-radius: 10px;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, .2);
+      width: 100%;
+      max-width: 500px;
+      /* width:70%;
+      margin:0 auto; */
+    }
+
+    h2 {
+      font-size: 22px;
+    }
+  </style>
+
+
+</head>
+
+<body class="bg-light py-5">
+  <main class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8 col-lg-6">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h4 class="card-title mb-3">회원가입</h4>
+
+            <!-- Form start -->
+            <form id="signupForm" novalidate>
+
+              <!-- 이름 -->
+              <div class="row mb-3">
+
+                <div class="col-md-6">
+                  <label for="name" class="form-label">이름 <span class="text-danger"></span></label>
+                  <input type="text" class="form-control" id="name" name="name" required>
+                  <div class="invalid-feedback">이름을 입력해주세요.</div>
+                </div>
+
+                <!-- 별명 -->
+                <div class="col-md-6">
+                  <label for="nickname" class="form-label">별명</label>
+                  <input type="text" class="form-control" id="nickname" name="nickname">
+                </div>
+              </div>
+
+              <!-- 이메일 -->
+              <div class="mb-3">
+                <label for="email" class="form-label">이메일 주소 <span class="text-danger">*</span></label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="you@example.com" required>
+                <div class="invalid-feedback">유효한 이메일 주소를 입력해주세요.</div>
+              </div>
+
+              <!-- 주소 (우편번호 + 상세주소) -->
+              <div class="mb-3">
+                <label class="form-label">주소</label>
+                <div class="row g-2">
+                  <div class="col-5">
+                  </div>
+                  <div class="mt-1">
+                    <input type="text" class="form-control" id="address" name="address" placeholder="서울특별시 강남구"
+                      aria-label="기본 주소">
+                  </div>
+                </div>
+                <div class="mt-3">
+                  <label class="form-label">상세 주소 (필수아님)</label>
+                  <input type="text" class="form-control" id="addressDetail" name="addressDetail"
+                    placeholder="상세주소를 입력해 주세요.">
+                </div>
+              </div>
+
+              <div class="row mb-5 custom-underline">
+                <!-- 가입 경로 -->
+                <div class="col-md-8">
+                  <label for="channel" class="form-label">가입 경로</label>
+                  <select id="channel" name="channel" class="form-select">
+                    <option value=""></option>
+                    <option value="search">검색엔진</option>
+                    <option value="sns">SNS</option>
+                    <option value="friend">지인 추천</option>
+                    <option value="ad">광고</option>
+                    <option value="etc">기타</option>
+                  </select>
+                </div>
+
+                <!-- 추천인 -->
+                <div class="col-md-4">
+                  <label for="referrer" class="form-label">추천인</label>
+                  <input type="text" class="form-control " id="referrer" name="referrer">
+                </div>
+              </div>
+
+              <!-- 동의 체크 (예시) -->
+              <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input" id="agree" required>
+                <label class="form-check-label" for="agree">이용약관 및 개인정보 수집에 동의합니다. <span
+                    class="text-danger">*</span></label>
+                <div class="invalid-feedback">동의가 필요합니다.</div>
+              </div>
+
+              <!-- 버튼 그룹 -->
+              <div class="d-flex justify-content-center gap-2">
+                <button type="submit" class="btn btn-primary w-100">가입 완료</button>
+              </div>
+
+            </form>
+            <!-- Form end -->
+
+          </div>
+        </div>
+        <p class="text-muted text-center small mt-2"> &copy; 2021 YD</p>
+      </div>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // 우편번호 검색 데모 (실제 API 연동 시 교체)
+    document.getElementById('findPostBtn').addEventListener('click', function () {
+      // 데모: 고정값 채우기
+      document.getElementById('postcode').value = '12345';
+      document.getElementById('address').value = '서울특별시 예시구 예시동';
+      document.getElementById('addressDetail').focus();
+    });
+
+    // 부트스트랩 양식 검증 처리
+    (function () {
+      'use strict'
+      const form = document.getElementById('signupForm');
+      form.addEventListener('submit', function (event) {
+        if (!form.checkValidity()) {
+          event.preventDefault();
+          event.stopPropagation();
+        } else {
+          event.preventDefault();
+          // 실제 환경: 여기에서 서버로 폼 전송 (fetch / axios 등)
+          const data = new FormData(form);
+          const obj = Object.fromEntries(data.entries());
+          console.log('폼 제출 데이터:', obj);
+          alert('가입이 요청되었습니다 (데모). 콘솔을 확인하세요.');
+          form.reset();
+        }
+        form.classList.add('was-validated');
+      }, false)
+    })();
+  </script>
+
+</body>
+
+</html>
